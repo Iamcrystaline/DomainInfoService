@@ -26,7 +26,8 @@ function makeAPICall() {
                 table.innerHTML = rows;
             },
             error: function (error) {
-                console.log(error)
+                console.log(error);
+                document.getElementById("errorInfo").innerHTML = error;
             }
 
         })

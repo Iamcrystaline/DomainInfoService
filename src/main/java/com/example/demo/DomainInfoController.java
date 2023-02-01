@@ -1,22 +1,18 @@
 package com.example.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class DomainInfoController {
 
-    private DomainInfoService service;
-
-    @Autowired
-    public DomainInfoController(DomainInfoService service) {
-        this.service = service;
-    }
+    private final DomainInfoService service;
 
     @GetMapping("/domainInfo")
     @CrossOrigin
     public String getDomainInfo(@RequestParam("domainName") String domainName) {
-        return service.getDomainInfo(domainName);
+        return service.getDomainInfo(new Domain(domainName));
     }
 }

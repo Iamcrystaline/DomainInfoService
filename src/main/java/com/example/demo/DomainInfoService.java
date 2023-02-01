@@ -1,34 +1,19 @@
 package com.example.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 @Service
+@RequiredArgsConstructor
 public class DomainInfoService {
 
-    private DomainInfoRequester domainInfoRequester;
+    private final DomainInfoRequester domainInfoRequester;
+    private final DomainPriceInfoRequester domainPriceInfoRequester;
+    private final DomainInfoCache cache;
+    private final DomainInfoParser domainInfoParser;
+    private final DomainPriceInfoParser domainPriceInfoParser;
 
-    private DomainPriceInfoRequester domainPriceInfoRequester;
-
-    private DomainInfoCache cache;
-
-    private DomainInfoParser domainInfoParser;
-
-    private DomainPriceInfoParser domainPriceInfoParser;
-
-    @Autowired
-    public DomainInfoService(DomainInfoRequester domainInfoRequester,
-                             DomainPriceInfoRequester domainPriceInfoRequester,
-                             DomainInfoCache cache,
-                             DomainInfoParser domainInfoParser,
-                             DomainPriceInfoParser domainPriceInfoParser) {
-        this.domainInfoRequester = domainInfoRequester;
-        this.domainPriceInfoRequester = domainPriceInfoRequester;
-        this.cache = cache;
-        this.domainInfoParser = domainInfoParser;
-        this.domainPriceInfoParser = domainPriceInfoParser;
-    }
-
-    public String getDomainInfo(String domain) {
+    public String getDomainInfo(Domain domain) {
         String cacheSearchResult = cache.checkCache(domain);
         if (!cacheSearchResult.equals("Not in cache")) {
             return cacheSearchResult;

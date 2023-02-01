@@ -20,11 +20,11 @@ public class DomainInfoRequester {
     @Value("${whoisxmlapi.api.key}")
     private String domainInfoApiKey;
 
-    public String requestDomainInfoApi(String domain) {
+    public String requestDomainInfoApi(Domain domain) {
         try {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(new URI(domainInfoEndpoint + "?apiKey=" + domainInfoApiKey +
-                            "&domainName=" + domain +
+                            "&domainName=" + domain.getDomainFullName() +
                             "&outputFormat=JSON"))
                     .timeout(Duration.of(10, ChronoUnit.SECONDS))
                     .GET()

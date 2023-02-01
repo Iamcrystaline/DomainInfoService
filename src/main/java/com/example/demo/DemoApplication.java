@@ -14,9 +14,4 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-	public Map<String, CacheableDomainInfo> getCache() {
-		return new HashMap<>();
-	}
-
 }

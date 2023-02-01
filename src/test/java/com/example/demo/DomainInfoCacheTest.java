@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -16,7 +17,7 @@ import static org.mockito.Mockito.when;
 class DomainInfoCacheTest {
 
     @Mock
-    private Map<String, CacheableDomainInfo> cache;
+    private Map<Domain, CacheableDomainInfo> cache;
 
     private DomainInfoCache underTest;
 
@@ -30,11 +31,11 @@ class DomainInfoCacheTest {
     @DisplayName("Given not cached value - When checkCache - Then should return 'Not in cache'")
     void checkCacheWithNotCachedValue() {
         // Given
-        String domainName = "foo";
-        when(cache.get(domainName)).thenReturn(null);
+        Domain domain = new Domain("foo.com");
+        when(cache.get(domain)).thenReturn(null);
 
         // When
-        String actual = underTest.checkCache(domainName);
+        String actual = underTest.checkCache(domain);
 
         // Then
         assertThat(actual).isEqualTo("Not in cache");
@@ -44,13 +45,13 @@ class DomainInfoCacheTest {
     @DisplayName("Given cached expired value - When checkCache - Then should return 'Not in cache'")
     void checkCacheWithCachedExpiredValue() {
         // Given
-        String domainName = "foo";
+        Domain domain = new Domain("foo.com");
         String cachedValue = "bar";
         CacheableDomainInfo cacheAnswer = new CacheableDomainInfo(cachedValue, LocalDateTime.now().minusHours(2));
-        when(cache.get(domainName)).thenReturn(cacheAnswer);
+        when(cache.get(domain)).thenReturn(cacheAnswer);
 
         // When
-        String actual = underTest.checkCache(domainName);
+        String actual = underTest.checkCache(domain);
 
         // Then
         assertThat(actual).isEqualTo("Not in cache");
@@ -60,13 +61,13 @@ class DomainInfoCacheTest {
     @DisplayName("Given cached not expired value - When checkCache - Then should return cached value")
     void checkCacheWithCachedNotExpiredValue() {
         // Given
-        String domainName = "foo";
+        Domain domain = new Domain("foo.com");
         String cachedValue = "bar";
         CacheableDomainInfo cacheAnswer = new CacheableDomainInfo(cachedValue, LocalDateTime.now().plusHours(2));
-        when(cache.get(domainName)).thenReturn(cacheAnswer);
+        when(cache.get(domain)).thenReturn(cacheAnswer);
 
         // When
-        String actual = underTest.checkCache(domainName);
+        String actual = underTest.checkCache(domain);
 
         // Then
         assertThat(actual).isEqualTo(cachedValue);
