@@ -2,6 +2,7 @@ package com.example.demo;
 
 import lombok.Getter;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,5 +41,18 @@ public class Domain {
 
     public Optional<String> getSubdomain() {
         return Optional.ofNullable(subdomain);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Domain)) return false;
+        Domain domain = (Domain) o;
+        return Objects.equals(getDomainFullName(), domain.getDomainFullName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDomainFullName());
     }
 }
