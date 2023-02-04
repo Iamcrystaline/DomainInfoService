@@ -62,7 +62,7 @@ public class IntegrationTest {
                 "\"Duration\":1," +
                 "\"YourPriceType\":\"MULTIPLE\"," +
                 "\"YourPrice\":35.99," +
-                "\"PromotionPrice\":0}," +
+                "\"PromotionPrice\":0.0}," +
                 "{\"DurationType\":\"YEAR\"," +
                 "\"RegularPriceType\":\"ABSOLUTE\"," +
                 "\"Price\":32.99," +
@@ -72,7 +72,7 @@ public class IntegrationTest {
                 "\"Duration\":2," +
                 "\"YourPriceType\":\"MULTIPLE\"," +
                 "\"YourPrice\":32.99," +
-                "\"PromotionPrice\":0}," +
+                "\"PromotionPrice\":0.0}," +
                 "{\"DurationType\":\"YEAR\"," +
                 "\"RegularPriceType\":\"ABSOLUTE\"," +
                 "\"Price\":32.99," +
@@ -82,7 +82,7 @@ public class IntegrationTest {
                 "\"Duration\":3," +
                 "\"YourPriceType\":\"MULTIPLE\"," +
                 "\"YourPrice\":32.99," +
-                "\"PromotionPrice\":0}," +
+                "\"PromotionPrice\":0.0}," +
                 "{\"DurationType\":\"YEAR\"," +
                 "\"RegularPriceType\":\"ABSOLUTE\"," +
                 "\"Price\":32.99," +
@@ -92,7 +92,7 @@ public class IntegrationTest {
                 "\"Duration\":4," +
                 "\"YourPriceType\":\"MULTIPLE\"," +
                 "\"YourPrice\":32.99," +
-                "\"PromotionPrice\":0}," +
+                "\"PromotionPrice\":0.0}," +
                 "{\"DurationType\":\"YEAR\"," +
                 "\"RegularPriceType\":\"ABSOLUTE\"," +
                 "\"Price\":19.99," +
@@ -102,7 +102,7 @@ public class IntegrationTest {
                 "\"Duration\":5," +
                 "\"YourPriceType\":\"MULTIPLE\"," +
                 "\"YourPrice\":19.99," +
-                "\"PromotionPrice\":0}]";
+                "\"PromotionPrice\":0.0}]";
 
         // When
         String actual;

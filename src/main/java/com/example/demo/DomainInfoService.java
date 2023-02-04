@@ -1,6 +1,9 @@
 package com.example.demo;
 
+import com.example.demo.response_entities.DomainInfo;
+import com.example.demo.response_entities.WhoIsXmlResponse;
 import com.github.benmanes.caffeine.cache.Cache;
+import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,25 +12,24 @@ import org.springframework.stereotype.Service;
 public class DomainInfoService {
 
     private final DomainInfoRequester domainInfoRequester;
-    private final DomainPriceInfoRequester domainPriceInfoRequester;
-    private final DomainInfoParser domainInfoParser;
-    private final DomainPriceInfoParser domainPriceInfoParser;
-    private final Cache<Domain, String> cache;
+    private final Cache<Domain, DomainInfo> domainInfoCache;
+    private final Gson gson;
+    private final DomainPriceInfoService domainPriceInfoService;
+    private final WhoIsXmlCredentials whoIsXmlCredentials;
 
     public String getDomainInfo(Domain domain) {
-        String cacheSearchResult = cache.getIfPresent(domain);
-        if (cacheSearchResult != null) {
-            return cacheSearchResult;
+        DomainInfo cachedDomainInfo = domainInfoCache.getIfPresent(domain);
+        if (cachedDomainInfo != null) {
+            return gson.toJson(cachedDomainInfo);
         }
-        String domainInfo = domainInfoRequester.requestDomainInfoApi(domain);
-        String parsedDomainInfo = domainInfoParser.parseDomainInfo(domainInfo);
-        if (parsedDomainInfo.equals("Not found")) {
-            String domainPriceInfo = domainPriceInfoRequester.requestDomainPriceInfoApi();
-            String parsedDomainPriceInfo = domainPriceInfoParser.parseDomainPriceInfo(domainPriceInfo);
-            cache.put(domain, parsedDomainPriceInfo);
-            return parsedDomainPriceInfo;
+        WhoIsXmlResponse whoIsXmlResponse = domainInfoRequester.getDomainInfo(whoIsXmlCredentials.getKey(),
+                domain.getDomainFullName());
+        DomainInfo domainInfo = new DomainInfo(whoIsXmlResponse.getWhoisRecord().getRegistrarName(),
+                whoIsXmlResponse.getWhoisRecord().getRegistryData().getExpiresDateNormalized());
+        if (domainInfo.getRegistrarName() == null) {
+            return domainPriceInfoService.getDomainPriceInfo(domain);
         }
-        cache.put(domain, parsedDomainInfo);
-        return parsedDomainInfo;
+        domainInfoCache.put(domain, domainInfo);
+        return gson.toJson(domainInfo);
     }
 }
