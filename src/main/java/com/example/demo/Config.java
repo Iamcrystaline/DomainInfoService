@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.jackson.JacksonDecoder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +18,12 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
+@RequiredArgsConstructor
 @ConfigurationPropertiesScan
 public class Config {
+
+    private final WhoIsXmlCredentials whoIsXmlCredentials;
+    private final NameCheapCredentials nameCheapCredentials;
 
     @Bean
     public Cache<Domain, DomainInfo> getDomainInfoCache() {
@@ -45,13 +50,13 @@ public class Config {
     public DomainInfoRequester getDomainInfoRequester() {
         return Feign.builder()
                 .decoder(new GsonDecoder())
-                .target(DomainInfoRequester.class, "https://www.whoisxmlapi.com");
+                .target(DomainInfoRequester.class, whoIsXmlCredentials.getEndpoint());
     }
 
     @Bean
     DomainPriceInfoRequester getDomainPriceInfoRequester() {
         return Feign.builder()
                 .decoder(new JacksonDecoder(new XmlMapper()))
-                .target(DomainPriceInfoRequester.class, "https://api.sandbox.namecheap.com");
+                .target(DomainPriceInfoRequester.class, nameCheapCredentials.getEndpoint());
     }
 }

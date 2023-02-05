@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApiResponse Status="OK" xmlns="http://api.namecheap.com/xml.response">
+    <Errors/>
+    <Warnings/>
+    <RequestedCommand>namecheap.users.getpricing</RequestedCommand>
+    <CommandResponse Type="namecheap.users.getPricing">
+        <UserGetPricingResult>
+            <ProductType Name="ssl">
+                <ProductCategory Name="purchase">
+                    <Product Name="instantssl">
+                        <Price Duration="1" DurationType="YEAR" Price="35.99" PricingType="MULTIPLE"
+                               RegularPrice="43.19" RegularPriceType="ABSOLUTE" YourPrice="35.99"
+                               YourPriceType="MULTIPLE" PromotionPrice="0.0" Currency="USD"/>
+                        <Price Duration="2" DurationType="YEAR" Price="32.99" PricingType="MULTIPLE"
+                               RegularPrice="79.18" RegularPriceType="ABSOLUTE" YourPrice="32.99"
+                               YourPriceType="MULTIPLE" PromotionPrice="0.0" Currency="USD"/>
+                        <Price Duration="3" DurationType="YEAR" Price="32.99" PricingType="MULTIPLE"
+                               RegularPrice="118.77" RegularPriceType="ABSOLUTE" YourPrice="32.99"
+                               YourPriceType="MULTIPLE" PromotionPrice="0.0" Currency="USD"/>
+                        <Price Duration="4" DurationType="YEAR" Price="32.99" PricingType="MULTIPLE"
+                               RegularPrice="158.36" RegularPriceType="ABSOLUTE" YourPrice="32.99"
+                               YourPriceType="MULTIPLE" PromotionPrice="0.0" Currency="USD"/>
+                        <Price Duration="5" DurationType="YEAR" Price="19.99" PricingType="MULTIPLE"
+                               RegularPrice="119.95" RegularPriceType="ABSOLUTE" YourPrice="19.99"
+                               YourPriceType="MULTIPLE" PromotionPrice="0.0" Currency="USD"/>
+                    </Product>
+                </ProductCategory>
+            </ProductType>
+        </UserGetPricingResult>
+    </CommandResponse>
+    <Server>PHX01SBAPIEXT06</Server>
+    <GMTTimeDifference>--5:00</GMTTimeDifference>
+    <ExecutionTime>0.053</ExecutionTime>
+</ApiResponse>

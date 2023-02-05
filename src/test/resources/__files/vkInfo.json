@@ -1,0 +1,47 @@
+{
+  "WhoisRecord": {
+    "domainName": "vk.ru",
+    "parseCode": 8,
+    "audit": {
+      "createdDate": "2023-01-22 16:07:18 UTC",
+      "updatedDate": "2023-01-22 16:07:18 UTC"
+    },
+    "registrarName": "RU-CENTER-RU",
+    "registrarIANAID": "1375",
+    "registryData": {
+      "createdDate": "1999-06-18T13:39:09Z",
+      "expiresDate": "2023-06-30T21:00:00Z",
+      "registrant": {
+        "organization": "LLC \"V Kontakte\""
+      },
+      "domainName": "vk.ru",
+      "nameServers": {
+        "rawText": "ns1.vkontakte.ru\u000ans2.vkontakte.ru\u000ans3.vkontakte.ru\u000ans4.vkontakte.ru\u000a",
+        "hostNames": [
+          "ns1.vkontakte.ru",
+          "ns2.vkontakte.ru",
+          "ns3.vkontakte.ru",
+          "ns4.vkontakte.ru"
+        ],
+        "ips": [
+        ]
+      },
+      "status": "REGISTERED, DELEGATED, VERIFIED",
+      "rawText": "% TCI Whois Service. Terms of use:\u000a% https://tcinet.ru/documents/whois_ru_rf.pdf (in Russian)\u000a% https://tcinet.ru/documents/whois_su.pdf (in Russian)\u000a\u000adomain:        VK.RU\u000anserver:       ns1.vkontakte.ru.\u000anserver:       ns2.vkontakte.ru.\u000anserver:       ns3.vkontakte.ru.\u000anserver:       ns4.vkontakte.ru.\u000astate:         REGISTERED, DELEGATED, VERIFIED\u000aorg:           LLC \"V Kontakte\"\u000ataxpayer-id:   7842349892\u000aregistrar:     RU-CENTER-RU\u000aadmin-contact: https://www.nic.ru/whois\u000acreated:       1999-06-18T13:39:09Z\u000apaid-till:     2023-06-30T21:00:00Z\u000afree-date:     2023-08-01\u000asource:        TCI\u000a\u000aLast updated on 2023-01-22T16:06:30Z",
+      "parseCode": 219,
+      "header": "% TCI Whois Service. Terms of use:\u000a% https://tcinet.ru/documents/whois_ru_rf.pdf (in Russian)\u000a% https://tcinet.ru/documents/whois_su.pdf (in Russian)",
+      "strippedText": "\u000adomain:        VK.RU\u000anserver:       ns1.vkontakte.ru.\u000anserver:       ns2.vkontakte.ru.\u000anserver:       ns3.vkontakte.ru.\u000anserver:       ns4.vkontakte.ru.\u000astate:         REGISTERED, DELEGATED, VERIFIED\u000aorg:           LLC \"V Kontakte\"\u000ataxpayer-id:   7842349892\u000aregistrar:     RU-CENTER-RU\u000aadmin-contact: https://www.nic.ru/whois\u000acreated:       1999-06-18T13:39:09Z\u000apaid-till:     2023-06-30T21:00:00Z\u000afree-date:     2023-08-01\u000asource:        TCI\u000a\u000aLast updated on 2023-01-22T16:06:30Z",
+      "audit": {
+        "createdDate": "2023-01-22 16:07:18 UTC",
+        "updatedDate": "2023-01-22 16:07:18 UTC"
+      },
+      "registrarName": "RU-CENTER-RU",
+      "registrarIANAID": "1375",
+      "createdDateNormalized": "1999-06-18 13:39:09 UTC",
+      "expiresDateNormalized": "2023-06-30 21:00:00 UTC",
+      "whoisServer": "whois.ripn.net"
+    },
+    "domainNameExt": ".ru",
+    "estimatedDomainAge": 8619
+  }
+}
