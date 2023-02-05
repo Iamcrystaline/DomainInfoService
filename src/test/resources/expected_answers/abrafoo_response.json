@@ -1,0 +1,62 @@
+[
+  {
+    "DurationType": "YEAR",
+    "RegularPriceType": "ABSOLUTE",
+    "Price": 35.99,
+    "Currency": "USD",
+    "PricingType": "MULTIPLE",
+    "RegularPrice": 43.19,
+    "Duration": 1,
+    "YourPriceType": "MULTIPLE",
+    "YourPrice": 35.99,
+    "PromotionPrice": 0.0
+  },
+  {
+    "DurationType": "YEAR",
+    "RegularPriceType": "ABSOLUTE",
+    "Price": 32.99,
+    "Currency": "USD",
+    "PricingType": "MULTIPLE",
+    "RegularPrice": 79.18,
+    "Duration": 2,
+    "YourPriceType": "MULTIPLE",
+    "YourPrice": 32.99,
+    "PromotionPrice": 0.0
+  },
+  {
+    "DurationType": "YEAR",
+    "RegularPriceType": "ABSOLUTE",
+    "Price": 32.99,
+    "Currency": "USD",
+    "PricingType": "MULTIPLE",
+    "RegularPrice": 118.77,
+    "Duration": 3,
+    "YourPriceType": "MULTIPLE",
+    "YourPrice": 32.99,
+    "PromotionPrice": 0.0
+  },
+  {
+    "DurationType": "YEAR",
+    "RegularPriceType": "ABSOLUTE",
+    "Price": 32.99,
+    "Currency": "USD",
+    "PricingType": "MULTIPLE",
+    "RegularPrice": 158.36,
+    "Duration": 4,
+    "YourPriceType": "MULTIPLE",
+    "YourPrice": 32.99,
+    "PromotionPrice": 0.0
+  },
+  {
+    "DurationType": "YEAR",
+    "RegularPriceType": "ABSOLUTE",
+    "Price": 19.99,
+    "Currency": "USD",
+    "PricingType": "MULTIPLE",
+    "RegularPrice": 119.95,
+    "Duration": 5,
+    "YourPriceType": "MULTIPLE",
+    "YourPrice": 19.99,
+    "PromotionPrice": 0.0
+  }
+]

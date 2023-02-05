@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
@@ -9,18 +11,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
@@ -53,7 +57,13 @@ public class IntegrationTest {
                 .willReturn(aResponse().withBodyFile("vkInfo.json")
                         .withStatus(200)));
         String domainName = "vk.ru";
-        String expectedAnswer = "{\"registrarName\":\"RU-CENTER-RU\",\"expiresDateNormalized\":\"2023-06-30 21:00:00 UTC\"}";
+        String expectedAnswer = "";
+        try {
+            expectedAnswer = new String(Files.readAllBytes(Paths.get("src/test/resources/expected_answers/vk_response.json")));
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Expected answer file not found");
+        }
 
         // When
         String actual;
@@ -75,7 +85,13 @@ public class IntegrationTest {
         }
 
         // Then
-        assertThat(actual).isEqualTo(expectedAnswer);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            assertThat(mapper.readTree(actual)).isEqualTo(mapper.readTree(expectedAnswer));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            fail("Wrong response format");
+        }
     }
 
     @Test
@@ -99,56 +115,13 @@ public class IntegrationTest {
                 .willReturn(aResponse().withBodyFile("priceInfo.xml")
                         .withStatus(200)));
         String domainName = "abrafoo.com";
-        String expectedAnswer = "[{\"DurationType\":\"YEAR\"," +
-                "\"RegularPriceType\":\"ABSOLUTE\"," +
-                "\"Price\":35.99," +
-                "\"Currency\":\"USD\"," +
-                "\"PricingType\":\"MULTIPLE\"," +
-                "\"RegularPrice\":43.19," +
-                "\"Duration\":1," +
-                "\"YourPriceType\":\"MULTIPLE\"," +
-                "\"YourPrice\":35.99," +
-                "\"PromotionPrice\":0.0}," +
-                "{\"DurationType\":\"YEAR\"," +
-                "\"RegularPriceType\":\"ABSOLUTE\"," +
-                "\"Price\":32.99," +
-                "\"Currency\":\"USD\"," +
-                "\"PricingType\":\"MULTIPLE\"," +
-                "\"RegularPrice\":79.18," +
-                "\"Duration\":2," +
-                "\"YourPriceType\":\"MULTIPLE\"," +
-                "\"YourPrice\":32.99," +
-                "\"PromotionPrice\":0.0}," +
-                "{\"DurationType\":\"YEAR\"," +
-                "\"RegularPriceType\":\"ABSOLUTE\"," +
-                "\"Price\":32.99," +
-                "\"Currency\":\"USD\"," +
-                "\"PricingType\":\"MULTIPLE\"," +
-                "\"RegularPrice\":118.77," +
-                "\"Duration\":3," +
-                "\"YourPriceType\":\"MULTIPLE\"," +
-                "\"YourPrice\":32.99," +
-                "\"PromotionPrice\":0.0}," +
-                "{\"DurationType\":\"YEAR\"," +
-                "\"RegularPriceType\":\"ABSOLUTE\"," +
-                "\"Price\":32.99," +
-                "\"Currency\":\"USD\"," +
-                "\"PricingType\":\"MULTIPLE\"," +
-                "\"RegularPrice\":158.36," +
-                "\"Duration\":4," +
-                "\"YourPriceType\":\"MULTIPLE\"," +
-                "\"YourPrice\":32.99," +
-                "\"PromotionPrice\":0.0}," +
-                "{\"DurationType\":\"YEAR\"," +
-                "\"RegularPriceType\":\"ABSOLUTE\"," +
-                "\"Price\":19.99," +
-                "\"Currency\":\"USD\"," +
-                "\"PricingType\":\"MULTIPLE\"," +
-                "\"RegularPrice\":119.95," +
-                "\"Duration\":5," +
-                "\"YourPriceType\":\"MULTIPLE\"," +
-                "\"YourPrice\":19.99," +
-                "\"PromotionPrice\":0.0}]";
+        String expectedAnswer = "";
+        try {
+            expectedAnswer = new String(Files.readAllBytes(Paths.get("src/test/resources/expected_answers/abrafoo_response.json")));
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Expected answer file not found");
+        }
 
         // When
         String actual;
@@ -170,6 +143,12 @@ public class IntegrationTest {
         }
 
         // Then
-        assertThat(actual).isEqualTo(expectedAnswer);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            assertThat(mapper.readTree(actual)).isEqualTo(mapper.readTree(expectedAnswer));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            fail("Wrong response format");
+        }
     }
 }
