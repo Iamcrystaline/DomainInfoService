@@ -1,5 +1,8 @@
-package com.example.demo;
+package com.example.demo.api.registration_info_services;
 
+import com.example.demo.api.Domain;
+import com.example.demo.api.purchasing_info_services.DomainPriceInfoService;
+import com.example.demo.credentials.WhoIsXmlCredentials;
 import com.example.demo.response_entities.DomainInfo;
 import com.example.demo.response_entities.WhoIsXmlResponse;
 import com.github.benmanes.caffeine.cache.Cache;

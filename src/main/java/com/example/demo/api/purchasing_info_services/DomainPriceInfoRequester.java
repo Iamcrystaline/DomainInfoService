@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.api.purchasing_info_services;
 
 import com.example.demo.response_entities.ApiResponse;
 import feign.Param;

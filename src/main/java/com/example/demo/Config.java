@@ -1,5 +1,10 @@
 package com.example.demo;
 
+import com.example.demo.api.Domain;
+import com.example.demo.api.registration_info_services.DomainInfoRequester;
+import com.example.demo.api.purchasing_info_services.DomainPriceInfoRequester;
+import com.example.demo.credentials.NameCheapCredentials;
+import com.example.demo.credentials.WhoIsXmlCredentials;
 import com.example.demo.response_entities.DomainInfo;
 import com.example.demo.response_entities.ApiResponse.CommandResponse.UserGetPricingResult.ProductType.ProductCategory.Product.Price;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
