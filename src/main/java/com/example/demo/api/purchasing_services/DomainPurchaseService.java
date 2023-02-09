@@ -1,4 +1,4 @@
-package com.example.demo.api.purchasing_info_services;
+package com.example.demo.api.purchasing_services;
 
 import com.example.demo.api.Domain;
 import com.example.demo.credentials.NameCheapCredentials;
@@ -13,28 +13,30 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DomainPriceInfoService {
+public class DomainPurchaseService {
 
-    private final NameCheapClient nameCheapClient;
-    private final Cache<Domain, List<Price>> domainPriceInfoCache;
+    private final NameCheapClient client;
+    private final Cache<Domain, List<Price>> cache;
     private final Gson gson;
-    private final NameCheapCredentials nameCheapCredentials;
+    private final NameCheapCredentials credentials;
 
     public String getDomainPriceInfo(Domain domain) {
-        List<Price> cachedDomainPriceInfo = domainPriceInfoCache.getIfPresent(domain);
+        List<Price> cachedDomainPriceInfo = cache.getIfPresent(domain);
         if (cachedDomainPriceInfo != null) {
             return gson.toJson(cachedDomainPriceInfo);
         }
-        ApiResponse apiResponse = nameCheapClient.getDomainPriceInfo(nameCheapCredentials.getApi_user(),
-                nameCheapCredentials.getKey(),
-                nameCheapCredentials.getClient_ip());
+        ApiResponse apiResponse = client.getDomainPriceInfo(
+                credentials.getApi_user(),
+                credentials.getKey(),
+                credentials.getClient_ip()
+        );
         List<Price> priceInfo = apiResponse.getCommandResponse()
                 .getUserGetPricingResult()
                 .getProductType()
                 .getProductCategory()
                 .getProduct()
                 .getPrice();
-        domainPriceInfoCache.put(domain, priceInfo);
+        cache.put(domain, priceInfo);
         return gson.toJson(priceInfo);
     }
 }

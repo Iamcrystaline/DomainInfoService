@@ -1,11 +1,11 @@
 package com.example.demo;
 
 import com.example.demo.api.Domain;
-import com.example.demo.api.registration_info_services.WhoIsXmlClient;
-import com.example.demo.api.purchasing_info_services.NameCheapClient;
+import com.example.demo.api.registration_services.WhoIsXmlClient;
+import com.example.demo.api.purchasing_services.NameCheapClient;
 import com.example.demo.credentials.NameCheapCredentials;
 import com.example.demo.credentials.WhoIsXmlCredentials;
-import com.example.demo.response_entities.DomainInfo;
+import com.example.demo.response_entities.DomainRegistrarInfo;
 import com.example.demo.response_entities.ApiResponse.CommandResponse.UserGetPricingResult.ProductType.ProductCategory.Product.Price;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github.benmanes.caffeine.cache.Cache;
@@ -31,7 +31,7 @@ public class Config {
     private final NameCheapCredentials nameCheapCredentials;
 
     @Bean
-    public Cache<Domain, DomainInfo> getDomainInfoCache() {
+    public Cache<Domain, DomainRegistrarInfo> getDomainInfoCache() {
         return Caffeine.newBuilder()
                 .expireAfterWrite(1, TimeUnit.DAYS)
                 .maximumSize(100)

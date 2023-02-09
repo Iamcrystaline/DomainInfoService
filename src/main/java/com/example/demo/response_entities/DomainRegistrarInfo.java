@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class DomainInfo {
+public class DomainRegistrarInfo {
 
     private String registrarName;
     private String expiresDateNormalized;
