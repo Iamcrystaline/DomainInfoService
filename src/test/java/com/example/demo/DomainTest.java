@@ -5,8 +5,6 @@ import com.example.demo.api.InvalidDomainNameException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -77,7 +75,6 @@ class DomainTest {
         assertThat(actual.getDomainFullName()).isEqualTo(domainName);
         assertThat(actual.getTopLevelDomain()).isEqualTo("com");
         assertThat(actual.getSecondLevelDomain()).isEqualTo("abrafoo");
-        assertThat(actual.getSubdomain()).isEqualTo(Optional.empty());
     }
 
     @Test
@@ -92,23 +89,6 @@ class DomainTest {
         // Then
         assertThat(actual.getDomainFullName()).isEqualTo(domainName);
         assertThat(actual.getTopLevelDomain()).isEqualTo("com");
-        assertThat(actual.getSecondLevelDomain()).isEqualTo("abrafoo");
-        assertThat(actual.getSubdomain().get()).isEqualTo("www");
-    }
-
-    @Test
-    @DisplayName("Given 4 level domain name - When new Domain - Then should successfully create Domain")
-    public void newDomainWithFourLevelDomainName() {
-        // Given
-        String domainName = "www.sandbox.abrafoo.com";
-
-        // When
-        Domain actual = new Domain(domainName);
-
-        // Then
-        assertThat(actual.getDomainFullName()).isEqualTo(domainName);
-        assertThat(actual.getTopLevelDomain()).isEqualTo("com");
-        assertThat(actual.getSecondLevelDomain()).isEqualTo("sandbox.abrafoo");
-        assertThat(actual.getSubdomain().get()).isEqualTo("www");
+        assertThat(actual.getSecondLevelDomain()).isEqualTo("www.abrafoo");
     }
 }
