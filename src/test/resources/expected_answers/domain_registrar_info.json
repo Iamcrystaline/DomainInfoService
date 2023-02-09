@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Registrar information",
+  "description": "Registrar information of existing domain",
+  "type": "object",
+  "properties": {
+    "registrarName": {
+      "description": "Name of the current registrar",
+      "type": "string"
+    },
+    "expiresDateNormalized": {
+      "description": "Expiration date and time in UTC",
+      "type": "string"
+    }
+  },
+  "required": [
+    "registrarName",
+    "expiresDateNormalized"
+  ]
+}

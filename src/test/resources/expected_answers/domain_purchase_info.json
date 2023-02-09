@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Purchase prices",
+  "description": "Purchase information for new domain",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "DurationType": {
+        "description": "Type of purchasing duration (YEAR, MONTH, DAY, etc)",
+        "type": "string"
+      },
+      "RegularPriceType": {
+        "description": "Type of purchasing regular price (ABSOLUTE, MULTIPLE)",
+        "type": "string"
+      },
+      "Price": {
+        "description": "Purchasing price",
+        "type": "number",
+        "minimum": 0
+      },
+      "Currency": {
+        "description": "Prices currency",
+        "type": "string"
+      },
+      "PricingType": {
+        "description": "Type of purchasing price (ABSOLUTE, MULTIPLE)",
+        "type": "string"
+      },
+      "RegularPrice": {
+        "description": "Purchasing regular price",
+        "type": "number",
+        "minimum": 0
+      },
+      "Duration": {
+        "description": "Purchasing regular price",
+        "type": "integer",
+        "minimum": 1
+      },
+      "YourPriceType": {
+        "description": "Type of your purchasing price (ABSOLUTE, MULTIPLE)",
+        "type": "string"
+      },
+      "YourPrice": {
+        "description": "Your purchasing price",
+        "type": "number",
+        "minimum": 0
+      },
+      "PromotionPrice": {
+        "description": "Promotion purchasing price",
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "required": [
+      "Duration",
+      "DurationType",
+      "RegularPrice",
+      "Currency"
+    ]
+  },
+  "minItems": 1,
+  "uniqueItems": true
+}
