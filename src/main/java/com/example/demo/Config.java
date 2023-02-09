@@ -1,8 +1,8 @@
 package com.example.demo;
 
 import com.example.demo.api.Domain;
-import com.example.demo.api.registration_info_services.DomainInfoRequester;
-import com.example.demo.api.purchasing_info_services.DomainPriceInfoRequester;
+import com.example.demo.api.registration_info_services.WhoIsXmlClient;
+import com.example.demo.api.purchasing_info_services.NameCheapClient;
 import com.example.demo.credentials.NameCheapCredentials;
 import com.example.demo.credentials.WhoIsXmlCredentials;
 import com.example.demo.response_entities.DomainInfo;
@@ -52,16 +52,16 @@ public class Config {
     }
 
     @Bean
-    public DomainInfoRequester getDomainInfoRequester() {
+    public WhoIsXmlClient getDomainInfoRequester() {
         return Feign.builder()
                 .decoder(new GsonDecoder())
-                .target(DomainInfoRequester.class, whoIsXmlCredentials.getEndpoint());
+                .target(WhoIsXmlClient.class, whoIsXmlCredentials.getEndpoint());
     }
 
     @Bean
-    DomainPriceInfoRequester getDomainPriceInfoRequester() {
+    NameCheapClient getDomainPriceInfoRequester() {
         return Feign.builder()
                 .decoder(new JacksonDecoder(new XmlMapper()))
-                .target(DomainPriceInfoRequester.class, nameCheapCredentials.getEndpoint());
+                .target(NameCheapClient.class, nameCheapCredentials.getEndpoint());
     }
 }

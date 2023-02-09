@@ -4,7 +4,7 @@ import com.example.demo.response_entities.ApiResponse;
 import feign.Param;
 import feign.RequestLine;
 
-public interface DomainPriceInfoRequester {
+public interface NameCheapClient {
 
     @RequestLine("GET /xml.response" +
             "?ApiUser={apiUser}" +

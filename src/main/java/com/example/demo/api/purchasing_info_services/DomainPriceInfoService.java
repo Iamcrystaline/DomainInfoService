@@ -1,7 +1,6 @@
 package com.example.demo.api.purchasing_info_services;
 
 import com.example.demo.api.Domain;
-import com.example.demo.api.purchasing_info_services.DomainPriceInfoRequester;
 import com.example.demo.credentials.NameCheapCredentials;
 import com.example.demo.response_entities.ApiResponse;
 import com.example.demo.response_entities.ApiResponse.CommandResponse.UserGetPricingResult.ProductType.ProductCategory.Product.Price;
@@ -16,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DomainPriceInfoService {
 
-    private final DomainPriceInfoRequester domainPriceInfoRequester;
+    private final NameCheapClient nameCheapClient;
     private final Cache<Domain, List<Price>> domainPriceInfoCache;
     private final Gson gson;
     private final NameCheapCredentials nameCheapCredentials;
@@ -26,7 +25,7 @@ public class DomainPriceInfoService {
         if (cachedDomainPriceInfo != null) {
             return gson.toJson(cachedDomainPriceInfo);
         }
-        ApiResponse apiResponse = domainPriceInfoRequester.getDomainPriceInfo(nameCheapCredentials.getApi_user(),
+        ApiResponse apiResponse = nameCheapClient.getDomainPriceInfo(nameCheapCredentials.getApi_user(),
                 nameCheapCredentials.getKey(),
                 nameCheapCredentials.getClient_ip());
         List<Price> priceInfo = apiResponse.getCommandResponse()

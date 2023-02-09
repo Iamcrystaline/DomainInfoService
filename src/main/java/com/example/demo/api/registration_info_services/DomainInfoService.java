@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DomainInfoService {
 
-    private final DomainInfoRequester domainInfoRequester;
+    private final WhoIsXmlClient whoIsXmlClient;
     private final Cache<Domain, DomainInfo> domainInfoCache;
     private final Gson gson;
     private final DomainPriceInfoService domainPriceInfoService;
@@ -25,7 +25,7 @@ public class DomainInfoService {
         if (cachedDomainInfo != null) {
             return gson.toJson(cachedDomainInfo);
         }
-        WhoIsXmlResponse whoIsXmlResponse = domainInfoRequester.getDomainInfo(whoIsXmlCredentials.getKey(),
+        WhoIsXmlResponse whoIsXmlResponse = whoIsXmlClient.getDomainInfo(whoIsXmlCredentials.getKey(),
                 domain.getDomainFullName());
         DomainInfo domainInfo = new DomainInfo(whoIsXmlResponse.getWhoisRecord().getRegistrarName(),
                 whoIsXmlResponse.getWhoisRecord().getRegistryData().getExpiresDateNormalized());
