@@ -25,9 +25,11 @@ function makeAPICall() {
                 }
                 table.innerHTML = rows;
             },
-            error: function (error) {
+            error: function (xhr, status, error) {
                 console.log(error);
-                document.getElementById("errorInfo").innerHTML = error;
+                document.querySelector("table").innerHTML = "";
+                let errorInfo = JSON.parse(xhr.responseText);
+                document.getElementById("errorInfo").innerHTML = errorInfo.message;
             }
 
         })
