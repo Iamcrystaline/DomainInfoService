@@ -1,9 +1,8 @@
-package com.example.demo.api.purchasing_services;
+package com.example.demo.api.namecheap;
 
 import com.example.demo.api.Domain;
-import com.example.demo.credentials.NameCheapCredentials;
-import com.example.demo.response_entities.ApiResponse;
-import com.example.demo.response_entities.ApiResponse.CommandResponse.UserGetPricingResult.ProductType.ProductCategory.Product.Price;
+import com.example.demo.api.namecheap.models.ApiResponse;
+import com.example.demo.api.namecheap.models.ApiResponse.CommandResponse.UserGetPricingResult.ProductType.ProductCategory.Product.Price;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;

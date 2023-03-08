@@ -1,4 +1,4 @@
-package com.example.demo.response_entities;
+package com.example.demo.api.namecheap.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;

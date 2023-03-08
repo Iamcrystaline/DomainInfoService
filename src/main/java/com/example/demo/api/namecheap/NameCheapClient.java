@@ -1,6 +1,6 @@
-package com.example.demo.api.purchasing_services;
+package com.example.demo.api.namecheap;
 
-import com.example.demo.response_entities.ApiResponse;
+import com.example.demo.api.namecheap.models.ApiResponse;
 import feign.Param;
 import feign.RequestLine;
 

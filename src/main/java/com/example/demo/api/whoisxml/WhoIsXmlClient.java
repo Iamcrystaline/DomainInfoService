@@ -1,6 +1,6 @@
-package com.example.demo.api.registration_services;
+package com.example.demo.api.whoisxml;
 
-import com.example.demo.response_entities.WhoIsXmlResponse;
+import com.example.demo.api.whoisxml.models.WhoIsXmlResponse;
 import feign.Param;
 import feign.RequestLine;
 

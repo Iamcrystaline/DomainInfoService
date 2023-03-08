@@ -1,6 +1,6 @@
 package com.example.demo.api;
 
-import com.example.demo.api.registration_services.DomainInfoService;
+import com.example.demo.api.whoisxml.DomainInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,10 +1,9 @@
-package com.example.demo.api.registration_services;
+package com.example.demo.api.whoisxml;
 
 import com.example.demo.api.Domain;
-import com.example.demo.api.purchasing_services.DomainPurchaseService;
-import com.example.demo.credentials.WhoIsXmlCredentials;
-import com.example.demo.response_entities.DomainRegistrarInfo;
-import com.example.demo.response_entities.WhoIsXmlResponse;
+import com.example.demo.api.namecheap.DomainPurchaseService;
+import com.example.demo.api.whoisxml.models.DomainRegistrarInfo;
+import com.example.demo.api.whoisxml.models.WhoIsXmlResponse;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;

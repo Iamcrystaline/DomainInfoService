@@ -1,4 +1,4 @@
-package com.example.demo.response_entities;
+package com.example.demo.api.whoisxml.models;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
