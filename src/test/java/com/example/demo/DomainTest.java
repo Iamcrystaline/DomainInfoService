@@ -20,7 +20,7 @@ class DomainTest {
         // Then
         assertThatThrownBy(() -> new Domain(domainName))
                 .usingRecursiveComparison()
-                .isEqualTo(new InvalidDomainNameException("Invalid domain name. Domain name can't be null"));
+                .isEqualTo(new InvalidDomainNameException("Invalid domain name. Domain name can't be empty"));
     }
 
     @Test
@@ -33,7 +33,7 @@ class DomainTest {
         // Then
         assertThatThrownBy(() -> new Domain(domainName))
                 .usingRecursiveComparison()
-                .isEqualTo(new InvalidDomainNameException("Invalid domain name. Domain name can't be null"));
+                .isEqualTo(new InvalidDomainNameException("Invalid domain name. Domain name can't be empty"));
     }
 
     @Test

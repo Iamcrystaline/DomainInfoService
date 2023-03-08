@@ -15,8 +15,8 @@ public class Domain {
     private final String secondLevelDomain;
 
     public Domain(String domainFullName) {
-        if (domainFullName == null) {
-            throw new InvalidDomainNameException("Invalid domain name. Domain name can't be null");
+        if (domainFullName == null || domainFullName.isEmpty()) {
+            throw new InvalidDomainNameException("Invalid domain name. Domain name can't be empty");
         }
         Matcher domainMatcher = domainPattern.matcher(domainFullName);
         if (!domainMatcher.matches()) {

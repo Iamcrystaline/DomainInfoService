@@ -10,8 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.Matchers.equalTo;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
@@ -89,5 +91,35 @@ public class IntegrationTest {
                 .then()
                 .assertThat()
                 .body(matchesJsonSchemaInClasspath("expected_answers/domain_purchase_info.json"));
+    }
+
+    @Test
+    @DisplayName("Given invalid domain abrafoo - When http get request - Then should throw error")
+    public void testInvalidDomain() {
+        // Given
+        String domainName = "abrafoo";
+
+        // When
+        // Then
+        io.restassured.RestAssured.get("/api/v1/domainInfo?domainName=" + domainName)
+                .then()
+                .assertThat()
+                .body("message", equalTo("Invalid domain name. Domain name should match xxx.xxx pattern"))
+                .body("status", equalTo(500));
+    }
+
+    @Test
+    @DisplayName("Given empty domain - When http get request - Then should throw error")
+    public void testEmptyDomain() {
+        // Given
+        String domainName = "";
+
+        // When
+        // Then
+        io.restassured.RestAssured.get("/api/v1/domainInfo?domainName=" + domainName)
+                .then()
+                .assertThat()
+                .body("message", equalTo("Invalid domain name. Domain name can't be empty"))
+                .body("status", equalTo(500));
     }
 }
