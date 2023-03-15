@@ -13,6 +13,11 @@ To access the application, just go to http://localhost:8080, print domain name t
 General:
 1. Download the project
 2. Go to the project main directory
+3. Register whoisxmlapi account on https://whois.whoisxmlapi.com/
+4. Get your api key and pass it to whoisxmlapi.api.key property in src/main/resources/application.properties
+5. Register namecheapapi account on https://www.sandbox.namecheap.com/
+6. Get your api key and add your IP address to whitelist
+7. Pass api key, IP address and your username to the following properties in src/main/resources/application.properties
 
 To run it locally:
 1. `mvn clean install`
