@@ -5,6 +5,10 @@ Application gets price information from namecheap API (https://www.namecheap.com
 
 To access the application, just go to http://localhost:8080, print domain name to check in the text field and press "Submit" button!
 
+### Notes
+- Given prices are not real, because application gets information from sandbox api, not original
+- To run the application you have to register whoisxmlapi and namecheap accounts and pass your personal data to application.properties file
+
 ### Prerequisites
 - JDK 17
 - Maven
